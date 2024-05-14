@@ -22,9 +22,29 @@ export async function retrieveUsers() {
     return users.rows;
 }
 
-export async function createOrder() {
-    // WIP
+export async function createOrder(formData: FormData) {
+    const userGuid = formData.get('userGuid') as string
+    const subTotal = parseFloat(formData.get('subtotal') as string)
+    const shipping = parseFloat(formData.get('shipping') as string)
+    const total = parseFloat(formData.get('total') as string)
+
     await sql`INSERT INTO "order" (guid, createdDate, "userGuid", subtotal, shipping, total)
-    VALUES ('ORD123', 'user123', 50.00, CURRENT_DATE());
+    VALUES (gen_random_uuid(), CURRENT_DATE(), ${userGuid}, ${subTotal}, ${shipping}, ${total});
     `;
+
+    const orderLines = JSON.parse(formData.get('orderLine') as string)
+
+    let orderLinesQuery = `INSERT INTO "orderline" (guid, orderguid, productguid, quantity)`
+
+    for (let i = 0; i < orderLines.length; i++) {
+        const line = orderLines[i]
+        if (i === 0) {
+            orderLinesQuery += `(gen_random_uuid(), ${line.orderGuid}, ${line.productGuid}, ${line.quantity})`
+        } else {
+            orderLinesQuery += `,(gen_random_uuid(), ${line.orderGuid}, ${line.productGuid}, ${line.quantity})`
+        }
+    }
+    orderLinesQuery += ';'
+
+    await sql`${orderLinesQuery}`;
 }
