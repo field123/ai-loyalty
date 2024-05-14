@@ -18,11 +18,12 @@ To read more about using these font, please visit the Next.js documentation:
 - Pages Directory: https://nextjs.org/docs/pages/building-your-application/optimizing/fonts
 **/
 import { Button } from "@/components/ui/button"
-import {retrieveProducts} from "@/app/cart/actions";
+import {retrieveProducts, retrieveUser} from "@/app/cart/actions";
 import AddToCartButton from "@/components/Cart";
 import {resolveTier} from "@/lib/resolve-tier";
 import {getCurrentCartValue} from "@/app/cart";
 import {TierButton} from "@/components/TierButton";
+import {TierMsgButton} from "@/components/TierMsgButton";
 
 export async function ShopperExperience() {
     const products = await retrieveProducts();
@@ -31,9 +32,7 @@ export async function ShopperExperience() {
     <section className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 md:gap-8 lg:gap-10 px-4 md:px-6 lg:px-8 py-12 md:py-16 lg:py-20 relative">
       <div className="absolute top-4 right-4 flex items-center gap-4">
         <TierButton />
-        <div className="text-gray-500 dark:text-gray-400 font-medium">
-          You have $254.76 to spend until you reach tier Silver
-        </div>
+        <TierMsgButton />
         <Button className="bg-black text-white font-bold px-8 py-4" size="lg" variant="default">
           Checkout
         </Button>
