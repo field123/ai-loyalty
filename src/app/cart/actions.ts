@@ -37,7 +37,7 @@ export async function createOrder(formData: FormData) {
     
     const orderLines = JSON.parse(formData.get('orderLine') as string)
 
-    let orderLinesQuery = `INSERT INTO "orderline" (guid, orderguid, productguid, quantity)`
+    let orderLinesQuery = `INSERT INTO "orderline" (guid, orderguid, productguid, quantity) VALUES `
 
     for (let i = 0; i < orderLines.length; i++) {
         const line = orderLines[i]
