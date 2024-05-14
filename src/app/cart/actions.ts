@@ -28,7 +28,7 @@ export async function createOrder(formData: FormData) {
     const shipping = parseFloat(formData.get('shipping') as string)
     const total = parseFloat(formData.get('total') as string)
 
-    const order = await sql`INSERT INTO "order" (guid, createdDate, "userGuid", subtotal, shipping, total)
+    const order = await sql`INSERT INTO "order" (guid, "createdDate", "userGuid", subtotal, shipping, total)
     VALUES (gen_random_uuid(), CURRENT_DATE(), ${userGuid}, ${subTotal}, ${shipping}, ${total});
     RETURNING guid;
     `;
@@ -37,7 +37,7 @@ export async function createOrder(formData: FormData) {
     
     const orderLines = JSON.parse(formData.get('orderLine') as string)
 
-    let orderLinesQuery = `INSERT INTO "orderline" (guid, orderguid, productguid, quantity)`
+    let orderLinesQuery = `INSERT INTO "orderline" (guid, orderguid, productguid, quantity) VALUES `
 
     for (let i = 0; i < orderLines.length; i++) {
         const line = orderLines[i]
