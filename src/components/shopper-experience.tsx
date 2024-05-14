@@ -18,8 +18,11 @@ To read more about using these font, please visit the Next.js documentation:
 - Pages Directory: https://nextjs.org/docs/pages/building-your-application/optimizing/fonts
 **/
 import { Button } from "@/components/ui/button"
+import {retrieveProducts} from "@/app/cart/actions";
 
-export function ShopperExperience() {
+export async function ShopperExperience() {
+    const products = await retrieveProducts();
+
   return (
     <section className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 md:gap-8 lg:gap-10 px-4 md:px-6 lg:px-8 py-12 md:py-16 lg:py-20 relative">
       <div className="absolute top-4 right-4 flex items-center gap-4">
@@ -31,144 +34,32 @@ export function ShopperExperience() {
           Checkout
         </Button>
       </div>
-      <div className="bg-white rounded-lg shadow-lg overflow-hidden dark:bg-gray-950">
-        <div className="relative">
-          <img
-            alt="Product 1"
-            className="w-full h-60 object-cover"
-            height={300}
-            src="/placeholder.svg"
-            style={{
-              aspectRatio: "400/300",
-              objectFit: "cover",
-            }}
-            width={400}
-          />
-          <div className="absolute top-3 right-3 bg-black text-white px-3 py-1 rounded-md text-base font-bold">New</div>
-        </div>
-        <div className="p-4">
-          <h3 className="text-lg font-semibold mb-1">Wireless Headphones</h3>
-          <p className="text-gray-500 dark:text-gray-400 text-sm mb-2">High-quality sound</p>
-          <div className="flex items-center justify-between">
-            <span className="text-lg font-semibold">$79.99</span>
-            <Button size="sm">Add to Cart</Button>
-          </div>
-        </div>
-      </div>
-      <div className="bg-white rounded-lg shadow-lg overflow-hidden dark:bg-gray-950">
-        <div className="relative">
-          <img
-            alt="Product 2"
-            className="w-full h-60 object-cover"
-            height={300}
-            src="/placeholder.svg"
-            style={{
-              aspectRatio: "400/300",
-              objectFit: "cover",
-            }}
-            width={400}
-          />
-          <div className="absolute top-3 right-3 bg-black text-white px-3 py-1 rounded-md text-base font-bold">New</div>
-        </div>
-        <div className="p-4">
-          <h3 className="text-lg font-semibold mb-1">Classic Leather Shoes</h3>
-          <p className="text-gray-500 dark:text-gray-400 text-sm mb-2">Elegant and comfortable</p>
-          <div className="flex items-center justify-between">
-            <span className="text-lg font-semibold">$59.99</span>
-            <Button size="sm">Add to Cart</Button>
-          </div>
-        </div>
-      </div>
-      <div className="bg-white rounded-lg shadow-lg overflow-hidden dark:bg-gray-950">
-        <div className="relative">
-          <img
-            alt="Product 3"
-            className="w-full h-60 object-cover"
-            height={300}
-            src="/placeholder.svg"
-            style={{
-              aspectRatio: "400/300",
-              objectFit: "cover",
-            }}
-            width={400}
-          />
-          <div className="absolute top-3 right-3 bg-black text-white px-3 py-1 rounded-md text-base font-bold">New</div>
-        </div>
-        <div className="p-4">
-          <h3 className="text-lg font-semibold mb-1">Designer Handbag</h3>
-          <p className="text-gray-500 dark:text-gray-400 text-sm mb-2">Fashion statement</p>
-          <div className="flex items-center justify-between">
-            <span className="text-lg font-semibold">$89.99</span>
-            <Button size="sm">Add to Cart</Button>
-          </div>
-        </div>
-      </div>
-      <div className="bg-white rounded-lg shadow-lg overflow-hidden dark:bg-gray-950">
-        <img
-          alt="Product 4"
-          className="w-full h-60 object-cover"
-          height={300}
-          src="/placeholder.svg"
-          style={{
-            aspectRatio: "400/300",
-            objectFit: "cover",
-          }}
-          width={400}
-        />
-        <div className="p-4">
-          <h3 className="text-lg font-semibold mb-1">Wireless Earbuds</h3>
-          <p className="text-gray-500 dark:text-gray-400 text-sm mb-2">Crystal clear audio</p>
-          <div className="flex items-center justify-between">
-            <span className="text-lg font-semibold">$69.99</span>
-            <Button size="sm">Add to Cart</Button>
-          </div>
-        </div>
-      </div>
-      <div className="bg-white rounded-lg shadow-lg overflow-hidden dark:bg-gray-950">
-        <div className="relative">
-          <img
-            alt="Product 5"
-            className="w-full h-60 object-cover"
-            height={300}
-            src="/placeholder.svg"
-            style={{
-              aspectRatio: "400/300",
-              objectFit: "cover",
-            }}
-            width={400}
-          />
-          <div className="absolute top-3 right-3 bg-black text-white px-3 py-1 rounded-md text-base font-bold">New</div>
-        </div>
-        <div className="p-4">
-          <h3 className="text-lg font-semibold mb-1">Vintage Pocket Watch</h3>
-          <p className="text-gray-500 dark:text-gray-400 text-sm mb-2">Antique charm</p>
-          <div className="flex items-center justify-between">
-            <span className="text-lg font-semibold">$79.99</span>
-            <Button size="sm">Add to Cart</Button>
-          </div>
-        </div>
-      </div>
-      <div className="bg-white rounded-lg shadow-lg overflow-hidden dark:bg-gray-950">
-        <img
-          alt="Product 6"
-          className="w-full h-60 object-cover"
-          height={300}
-          src="/placeholder.svg"
-          style={{
-            aspectRatio: "400/300",
-            objectFit: "cover",
-          }}
-          width={400}
-        />
-        <div className="p-4">
-          <h3 className="text-lg font-semibold mb-1">Beach Bliss Flip-Flops</h3>
-          <p className="text-gray-500 dark:text-gray-400 text-sm mb-2">Comfortable Footwear</p>
-          <div className="flex items-center justify-between">
-            <span className="text-lg font-semibold">$19.99</span>
-            <Button size="sm">Add to Cart</Button>
-          </div>
-        </div>
-      </div>
+        {products.map(product => {
+            return (
+                <div key={product.guid} className="bg-white rounded-lg shadow-lg overflow-hidden dark:bg-gray-950">
+                <div className="relative">
+                    <img
+                        alt="Product 1"
+                        className="w-full h-60 object-cover"
+                        height={300}
+                        src="/placeholder.svg"
+                        style={{
+                            aspectRatio: "400/300",
+                            objectFit: "cover",
+                        }}
+                        width={400}
+                    />
+                </div>
+                <div className="p-4">
+                    <h3 className="text-lg font-semibold mb-1">{product.name}</h3>
+                    <p className="text-gray-500 dark:text-gray-400 text-sm mb-2">{product.description}</p>
+                    <div className="flex items-center justify-between">
+                        <span className="text-lg font-semibold">${product.price}</span>
+                        <Button size="sm">Add to Cart</Button>
+                    </div>
+                </div>
+            </div>)
+        })}
     </section>
   )
 }

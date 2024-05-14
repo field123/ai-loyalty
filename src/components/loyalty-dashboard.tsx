@@ -1,10 +1,10 @@
 import { CardTitle, CardHeader, CardContent, Card, CardFooter } from "@/components/ui/card"
 import { TableHead, TableRow, TableHeader, TableCell, TableBody, Table } from "@/components/ui/table"
-import {retrieveAllUser} from "@/app/cart/actions";
+import {retrieveUsers} from "@/app/cart/actions";
 import {resolveTier} from "@/lib/resolve-tier";
 
 export async function LoyaltyDashboard() {
-  const users = await retrieveAllUser();
+  const users = await retrieveUsers();
 
   const customersMetrics = users.reduce((acc, user) => {
     const tier = resolveTier(user.loyalty_value);
