@@ -48,3 +48,10 @@ export async function createOrder(formData: FormData) {
 
     await sql`${orderLinesQuery}`;
 }
+
+export async function retrieveProducts() {
+    const products = await sql`SELECT guid, name, price, "newProduct", description
+    FROM product;`;
+
+    return products.rows;
+}
