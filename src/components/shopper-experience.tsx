@@ -24,6 +24,7 @@ import {resolveTier} from "@/lib/resolve-tier";
 import {getCurrentCartValue} from "@/app/cart";
 import {TierButton} from "@/components/TierButton";
 import {TierMsgButton} from "@/components/TierMsgButton";
+import {Suspense} from "react";
 
 export async function ShopperExperience() {
     const products = await retrieveProducts();
@@ -31,8 +32,10 @@ export async function ShopperExperience() {
   return (
     <section className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 md:gap-8 lg:gap-10 px-4 md:px-6 lg:px-8 py-12 md:py-16 lg:py-20 relative">
       <div className="absolute top-4 right-4 flex items-center gap-4">
+          <Suspense fallback={<div>Loading...</div>}>
         <TierButton />
         <TierMsgButton />
+          </Suspense>
         <Button className="bg-black text-white font-bold px-8 py-4" size="lg" variant="default">
           Checkout
         </Button>
