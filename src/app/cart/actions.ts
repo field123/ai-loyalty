@@ -12,6 +12,16 @@ export async function retrieveUser(userEmail: string) {
     return user.rows;
 }
 
+export async function retrieveAllUser() {
+    const user = await sql`SELECT u.guid, u.email, u.name, SUM(o.subtotal) AS loyalty_value
+    FROM "user" u
+    INNER JOIN "order" o ON u.guid = o."userGuid"
+    GROUP BY u.guid;
+    `;
+
+    return user.rows;
+}
+
 export async function createOrder() {
     // WIP
     await sql`INSERT INTO "order" (guid, createdDate, "userGuid", subtotal, shipping, total)

@@ -1,7 +1,7 @@
-import {LoyaltyDashboard} from "@/components/loyalty-dashboard";
+import {ShopperExperience} from "@/components/shopper-experience";
 
-export default function Dashboard() {
+export default function ShopperPage() {
     return (
-        <LoyaltyDashboard />
-    )
+        <ShopperExperience />
+    );
 }

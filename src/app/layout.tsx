@@ -15,7 +15,7 @@ export default function RootLayout({ children }: Readonly<{
 }>) {
   return (
       <html lang="en">
-          <body className={inter.variable}>
+          <body className={`${inter.variable} light`}>
             {children}
           </body>
       </html>
