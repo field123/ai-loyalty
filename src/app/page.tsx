@@ -1,7 +1,7 @@
-import {Cart} from "@/app/cart/cart";
+import {LoyaltyDashboard} from "@/components/loyalty-dashboard";
 
-export default async function CartPage() {
+export default function Dashboard() {
     return (
-        <Cart />
+        <LoyaltyDashboard />
     )
 }
